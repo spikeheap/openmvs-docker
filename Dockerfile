@@ -1,7 +1,7 @@
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 
 RUN apt-get update && \
-    apt-get -y install \
+    DEBIAN_FRONTEND=noninteractive apt-get -y install \
                 build-essential \
                 cmake \
                 git \
@@ -36,8 +36,8 @@ WORKDIR /
 RUN git clone https://github.com/cdcseacave/VCG.git vcglib
 
 # Latest head breaks build for Ubuntu 
-WORKDIR /vcglib
-RUN git checkout b42e3ed7fa1a3861fd35060d40e8cbfe58278100
+# WORKDIR /vcglib
+# RUN git checkout b42e3ed7fa1a3861fd35060d40e8cbfe58278100
 
 #Ceres (Required)
 WORKDIR /
